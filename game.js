@@ -10,9 +10,12 @@ export class Ship {
         this.sunk = null;
     }
 
+    hitCap = this.sunk;
+    
+
     hit() {
         //if hit is detected this.hits +1
-
+        if (hit()) this.hits = ++1;
     }
 
     isSunk() {
