@@ -1,32 +1,44 @@
 
 
-//ship class or factory
 
 
 export class Ship {
-    constructor() {
+    constructor(length) {
         this.length = length;
-        this.hits = null;
+        this.hits = [];
         this.sunk = null;
     }
 
-    hitCap = this.sunk;
-    
+    shipLengths = [
+    {carrier: 5},
+    {battleship: 4},
+    {cruiser: 3},
+    {submarine: 3},
+    {destroyer: 2}
+    ]
 
-    hit() {
+    
+    hit(value) {
         //if hit is detected this.hits +1
-        if (hit()) this.hits = ++1;
+        this.hits.push(value);
     }
 
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
+        if (this.hits == this.length) {
+            alert("Hit and sink");
+        }
         //and the number of hits it has received
     }
+
 }
 
 
-
-
+const ship = new Ship();
+const hit = ship.hit(1);
+// hit;
+// hit;
+console.log(ship);
 
 
 export class Gameboard {
