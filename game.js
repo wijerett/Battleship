@@ -1,40 +1,37 @@
 
 
 
+const shipLengths = new Map([
+    ['carrier', 5],
+    ['battleship', 4],
+    ['cruiser', 3],
+    ['submarine', 2],
+    ['patrol', 1]
+]);
+
 
 export class Ship {
-    constructor(length) {
+    constructor(length, hits) {
         this.length = length;
-        this.hits = [
-            {name: 'carrier', length:5, hits:0},
-            {name: 'battleship', length: 4, hits: 0},
-            {name: 'cruiser', length: 3, hits: 0},
-            {name: 'submarine', length: 2, hits: 0},
-            {name: 'patrol', length: 1, hits: 0}
-        ];
+        this.hits = hits;
         this.sunk = null;
     }
 
 
     //need to make this look like my hits array up top
-    shipLengths = [
-    {carrier: 5},
-    {battleship: 4},
-    {cruiser: 3},
-    {submarine: 3},
-    {destroyer: 2}
-    ]
+
 
     
     hit() {
         //if hit is detected this.hits +1
-        this.hits++;
+        this.shipLengths.hits++;//change because of hash map
     }
 
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
-        if (this.hits == this.length) {
+        if (this.hits == shipLength) {
             alert("Hit and sink");
+            this.sunk === 'sunk';
         }
         //and the number of hits it has received
     }
@@ -43,9 +40,11 @@ export class Ship {
 
 
 const ship = new Ship();
-const hit = ship.hit(['carrier']);
+const lengths = shipLengths;
+const hit = lengths.set('carrier', 1);
 // hit;
 // hit;
+console.log(lengths);
 console.log(ship);
 
 
