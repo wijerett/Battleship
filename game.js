@@ -18,34 +18,38 @@ export class Ship {
     }
 
 
-    //need to make this look like my hits array up top
-
-
     
+
+
     hit() {
         //if hit is detected this.hits +1
-        this.shipLengths.hits++;//change because of hash map
+        // this.shipLengths.hits++;//change because of hash map
+        const ship = new Ship();
+        const hit = lengthsMap.set('carrier', 1);
+        if(length > 0) {
+            ship.hits = lengthsMap;
+        }
     }
 
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
-        if (this.hits == shipLength) {
-            alert("Hit and sink");
-            this.sunk === 'sunk';
-        }
-        //and the number of hits it has received
+        // if (hits == shipLength) {
+        //     alert("Hit and sink"
     }
+
+
 
 }
 
 
-const ship = new Ship();
-const lengths = shipLengths;
-const hit = lengths.set('carrier', 1);
+    console.log(lengthsMap);
+    console.log(ship);
+
+// // const ship = new Ship();
+// // const lengthsMap = shipLengths;
+// const hit = lengthsMap.set('carrier', 1);
 // hit;
 // hit;
-console.log(lengths);
-console.log(ship);
 
 
 export class Gameboard {
@@ -76,7 +80,8 @@ export class Player {
 }
 
 
-
+const ship = new Ship();
+console.log(ship);
 
 //import classes/factories into another file, drive the game using event
 //listeners to interact with the objects. create a module that helps 
