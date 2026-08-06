@@ -21,29 +21,41 @@ export class Ship {
     
 
 
-    hit() {
+    hit(key, value) {
         //if hit is detected this.hits +1
         // this.shipLengths.hits++;//change because of hash map
-        const ship = new Ship();
-        const hit = lengthsMap.set('carrier', 1);
-        if(length > 0) {
-            ship.hits = lengthsMap;
-        }
-    }
+        
+        // const hit = lengthsMap.set('carrier', 1);
 
+
+
+        //take key and value in and update ship value of hits
+        
+        if (key, value) {
+            shipLengths.push('carrier', 1)
+        }
+
+        //shipLengths. = lengthsMap;
+    }
+    
+    
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
         // if (hits == shipLength) {
         //     alert("Hit and sink"
     }
-
-
-
+    
 }
 
 
-    console.log(lengthsMap);
-    console.log(ship);
+
+
+let ship = new Ship();
+let hit = ship.hit();
+console.log(hit);
+console.log(ship);
+console.log(shipLengths);
+
 
 // // const ship = new Ship();
 // // const lengthsMap = shipLengths;
@@ -59,7 +71,6 @@ export class Gameboard {
     
     //receiveAttack function that takes a pair of coordinates, determines
 
-
     //if attack hit a ship then sends hit function to the correct ship or 
     //records coordinates of the missed shot
 
@@ -69,8 +80,6 @@ export class Gameboard {
 
 }
 
-
-
 export class Player {
 
     //real player vs computer player
@@ -79,9 +88,6 @@ export class Player {
 
 }
 
-
-const ship = new Ship();
-console.log(ship);
 
 //import classes/factories into another file, drive the game using event
 //listeners to interact with the objects. create a module that helps 
