@@ -37,7 +37,6 @@ export class Ship {
         //if i update with each hit to shipHits i can do a 
         //comparison statement to say if shipHits === shipLengths, then sunk
 
-
         if (key == 'carrier') {
             shipHits.set('carrier', shipHits.get('carrier') + 1);
             this.isSunk();

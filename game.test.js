@@ -7,4 +7,5 @@ const ship = new Ship();
 
 
 test('ship exists', () => {
-    expect(ship).toContain(undefined)});
+    expect(ship).toBe({ "length": undefined, "hits": 0, "sunk": false})
+});
