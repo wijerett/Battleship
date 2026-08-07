@@ -28,8 +28,10 @@ export class Ship {
     populateShip() {
         const shipSize = shipLengths;
         const shipHitsPopulated = shipHits;
-        this.length = shipSize.value;
-        this.hits = shipHitsPopulated.value;
+        this.length = shipSize;
+        this.hits = shipHitsPopulated;
+        //test wont run here properly because of map names instead of
+        //general instructions
     }
 
     hit(key) {
@@ -75,9 +77,11 @@ export class Ship {
 
 
 let ship = new Ship();
-ship.populateShip();
-let hit = ship.hit('patrol');
+// ship.populateShip();
+// let hit = ship.hit('patrol');
+
 // console.log(hit);
+
 console.log(ship);
 // console.log(shipLengths);
 // console.log(shipHits);
