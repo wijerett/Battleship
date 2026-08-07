@@ -9,59 +9,85 @@ const shipLengths = new Map([
     ['patrol', 1]
 ]);
 
+const shipHits = new Map([
+    ['carrier', 0],
+    ['battleship', 0],
+    ['cruiser', 0],
+    ['submarine', 0],
+    ['patrol', 0]
+]);
+
 
 export class Ship {
-    constructor(length, hits) {
+    constructor(length) {
         this.length = length;
-        this.hits = hits;
-        this.sunk = null;
+        this.hits = 0;
+        this.sunk = false;
     }
 
+    populateShip() {
+        const shipSize = shipLengths;
+        const shipHitsPopulated = shipHits;
+        this.length = shipSize.value;
+        this.hits = shipHitsPopulated.value;
+    }
 
-    
-
-
-    hit(key, value) {
-        //if hit is detected this.hits +1
-        // this.shipLengths.hits++;//change because of hash map
+    hit(key) {
         
-        // const hit = lengthsMap.set('carrier', 1);
+        //if i update with each hit to shipHits i can do a 
+        //comparison statement to say if shipHits === shipLengths, then sunk
 
 
-
-        //take key and value in and update ship value of hits
-        
-        if (key, value) {
-            shipLengths.push('carrier', 1)
+        if (key == 'carrier') {
+            shipHits.set('carrier', shipHits.get('carrier') + 1);
+            this.isSunk();
+        } else if (key == 'battleship') {
+            shipHits.set('battleship', shipHits.get('battleship') + 1);
+            this.isSunk();
+        } else if (key == 'cruiser') {
+            shipHits.set('cruiser', shipHits.get('cruiser') + 1);
+            this.isSunk();
+        } else if (key == 'submarine') {
+            shipHits.set('submarine', shipHits.get('submarine') + 1);
+            this.isSunk();
+        } else if (key == 'patrol') {
+            shipHits.set('patrol', shipHits.get('patrol') + 1);
+            this.isSunk();
         }
 
-        //shipLengths. = lengthsMap;
     }
-    
-    
+
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
-        // if (hits == shipLength) {
-        //     alert("Hit and sink"
+        // if (shipHits == shipLength) {
+        //     alert("Hit and sink")
+
+        for (const [ship, hits] of shipHits) {
+            if (hits === shipLengths.get(ship)) {
+                console.log(`${ship} is sunk!`);
+            }
+        }
     }
-    
+
+
 }
 
 
 
 
 let ship = new Ship();
-let hit = ship.hit();
-console.log(hit);
+ship.populateShip();
+let hit = ship.hit('patrol');
+// console.log(hit);
 console.log(ship);
-console.log(shipLengths);
+// console.log(shipLengths);
+// console.log(shipHits);
 
 
-// // const ship = new Ship();
-// // const lengthsMap = shipLengths;
+// const ship = new Ship();
+// const lengthsMap = shipLengths;
 // const hit = lengthsMap.set('carrier', 1);
-// hit;
-// hit;
+
 
 
 export class Gameboard {
