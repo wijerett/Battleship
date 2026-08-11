@@ -1,21 +1,6 @@
 
 
 
-const shipLengths = new Map([
-    ['carrier', 5],
-    ['battleship', 4],
-    ['cruiser', 3],
-    ['submarine', 2],
-    ['patrol', 1]
-]);
-
-const shipHits = new Map([
-    ['carrier', 0],
-    ['battleship', 0],
-    ['cruiser', 0],
-    ['submarine', 0],
-    ['patrol', 0]
-]);
 
 
 export class Ship {
@@ -25,71 +10,57 @@ export class Ship {
         this.sunk = false;
     }
 
-    populateShip() {
-        const shipSize = shipLengths;
-        const shipHitsPopulated = shipHits;
-        this.length = shipSize;
-        this.hits = shipHitsPopulated;
-        //test wont run here properly because of map names instead of
-        //general instructions
-    }
-
     hit(key) {
-        
+        this.hits += 1;
+        this.isSunk();
         //if i update with each hit to shipHits i can do a 
         //comparison statement to say if shipHits === shipLengths, then sunk
 
-        if (key == 'carrier') {
-            shipHits.set('carrier', shipHits.get('carrier') + 1);
-            this.isSunk();
-        } else if (key == 'battleship') {
-            shipHits.set('battleship', shipHits.get('battleship') + 1);
-            this.isSunk();
-        } else if (key == 'cruiser') {
-            shipHits.set('cruiser', shipHits.get('cruiser') + 1);
-            this.isSunk();
-        } else if (key == 'submarine') {
-            shipHits.set('submarine', shipHits.get('submarine') + 1);
-            this.isSunk();
-        } else if (key == 'patrol') {
-            shipHits.set('patrol', shipHits.get('patrol') + 1);
-            this.isSunk();
-        }
+        // if (key == 'carrier') {
+        //     shipHits.set('carrier', shipHits.get('carrier') + 1);
+        //     this.isSunk();
+        // } else if (key == 'battleship') {
+        //     shipHits.set('battleship', shipHits.get('battleship') + 1);
+        //     this.isSunk();
+        // } else if (key == 'cruiser') {
+        //     shipHits.set('cruiser', shipHits.get('cruiser') + 1);
+        //     this.isSunk();
+        // } else if (key == 'submarine') {
+        //     shipHits.set('submarine', shipHits.get('submarine') + 1);
+        //     this.isSunk();
+        // } else if (key == 'patrol') {
+        //     shipHits.set('patrol', shipHits.get('patrol') + 1);
+        //     this.isSunk();
+        // }
     }
 
     isSunk() {
-        //calculates whether a ship is considered sunk based on its length
-
-
-        // need to compare after data gets ported to ship class
-
-        for (const [hits, shipLength] of shipHits) {
-            if (ship.hits === shipLengths.get(ship)) {
-                console.log(`${ship} is sunk!`);
-                return true;
-            }
-        }
+        if (this.hits === this.length) {
+            return this.sunk;
+        };
     }
 
 
 }
 
 
+const ships = new Map([
+    ['carrier', new Ship(5)],
+    ['battleship', new Ship(4)],
+    ['cruiser', new Ship(3)],
+    ['submarine', new Ship(3)],
+    ['patrol', new Ship(1)]
+]);
 
 
-let ship = new Ship();
-ship.populateShip();
-let hit = ship.hit('patrol');
-console.log(ship);
+ships.get('patrol').hit();
+
+
+
+console.log(ships);
 
 // console.log(hit);
 
-// let ship = new Ship();
-// console.log(ship);
-
-
-// console.log(shipLengths);
-// console.log(shipHits);
 
 
 
