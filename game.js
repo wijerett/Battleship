@@ -55,17 +55,18 @@ export class Ship {
             shipHits.set('patrol', shipHits.get('patrol') + 1);
             this.isSunk();
         }
-
     }
 
     isSunk() {
         //calculates whether a ship is considered sunk based on its length
-        // if (shipHits == shipLength) {
-        //     alert("Hit and sink")
 
-        for (const [ship, hits] of shipHits) {
-            if (hits === shipLengths.get(ship)) {
+
+        // need to compare after data gets ported to ship class
+
+        for (const [hits, shipLength] of shipHits) {
+            if (ship.hits === shipLengths.get(ship)) {
                 console.log(`${ship} is sunk!`);
+                return true;
             }
         }
     }
@@ -77,19 +78,19 @@ export class Ship {
 
 
 let ship = new Ship();
-// ship.populateShip();
-// let hit = ship.hit('patrol');
+ship.populateShip();
+let hit = ship.hit('patrol');
+console.log(ship);
 
 // console.log(hit);
 
-console.log(ship);
+// let ship = new Ship();
+// console.log(ship);
+
+
 // console.log(shipLengths);
 // console.log(shipHits);
 
-
-// const ship = new Ship();
-// const lengthsMap = shipLengths;
-// const hit = lengthsMap.set('carrier', 1);
 
 
 

@@ -25,9 +25,14 @@ const shipHits = new Map([
 
 const ship = new Ship();
 
-describe('shipsValues', () => {})
+
 
 test('ship exists', () => {
     expect(ship).toEqual({ "length": undefined, "hits": 0, "sunk": false})
 });
 
+
+
+test('ship exists', () => {
+    expect(ship).toEqual({ "length": undefined, "hits": 0, "sunk": false})
+});
