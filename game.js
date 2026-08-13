@@ -36,7 +36,7 @@ export class Ship {
 
     isSunk() {
         if (this.hits === this.length) {
-            return this.sunk;
+            return this.sunk = true;
         };
     }
 
@@ -53,11 +53,15 @@ const ships = new Map([
 ]);
 
 
-ships.get('patrol').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
 
 
 
-console.log(ships);
+// console.log(ships);
 
 // console.log(hit);
 
