@@ -2,7 +2,8 @@ import { Ship } from "./game.js";
 
 export class Gameboard {
     constructor() {
-        
+        this.rows = 5;
+        this.colums = 5;
     }
 
 
