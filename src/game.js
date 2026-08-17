@@ -18,7 +18,7 @@ export class Ship {
         if (this.hits === this.length) {
             return this.sunk = true;
         };
-    };
+    };    
 };
 
 const ships = new Map([
@@ -28,6 +28,7 @@ const ships = new Map([
     ['submarine', new Ship(3)],
     ['patrol', new Ship(1)]
 ]);
+
 
 // ships.get('carrier').hit();
 // ships.get('carrier').hit();

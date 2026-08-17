@@ -1,7 +1,18 @@
+
+
+
+
 import { Ship } from "./game.js";
 
+const ships = new Map([
+    ['carrier', new Ship(5)],
+    ['battleship', new Ship(4)],
+    ['cruiser', new Ship(3)],
+    ['submarine', new Ship(3)],
+    ['patrol', new Ship(1)]
+]);
 export class Gameboard {
-    constructor(size = 10) {
+    constructor(size = 6) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -20,10 +31,15 @@ export class Gameboard {
                 });
             }
             board.push(rowArray);
+            
         }
+        board.push(ships);
         return board;
     }
 
+    coordinates() {
+        
+    }
 
     //place ships at specific coordinates by calling ship class
     
@@ -37,6 +53,8 @@ export class Gameboard {
     //gameboard should be able to report if all ships are sunk or not
 
 }
+
+
 
 
 let game = new Gameboard();
