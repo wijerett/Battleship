@@ -1,18 +1,34 @@
 import { Ship } from "./game.js";
 
 export class Gameboard {
-    constructor() {
-        this.rows = 5;
-        this.colums = 5;
+    constructor(size = 10) {
+        this.size = size;
+        this.board = this.buildBoard();
+        this.ships = [];
+        this.missedAttacks = [];
     }
 
+    buildBoard() {
+        const board = [];
+
+        for (let row = 0; row < this.size; row++) {
+            const rowArray = [];
+            for (let col = 0; col < this.size; col++) {
+                rowArray.push({
+                    ship: null,
+                    hit: false,
+                });
+            }
+            board.push(rowArray);
+        }
+        return board;
+    }
 
 
     //place ships at specific coordinates by calling ship class
     
     
     //receiveAttack function that takes a pair of coordinates, determines
-
     //if attack hit a ship then sends hit function to the correct ship or 
     //records coordinates of the missed shot
 
@@ -22,21 +38,7 @@ export class Gameboard {
 
 }
 
-const boardSize = 10;
 
-const board = [];
+let game = new Gameboard();
 
-
-  
-for (let i = 0; i != boardSize; i++) {
-   board.push([]);
-    for (let j = 0; j != boardSize; j++) {
-       board[i].push(0);
-    }
-}
-console.log(board);
-
-
-
-
-
+console.log(game);
