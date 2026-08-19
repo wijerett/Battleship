@@ -1,26 +1,69 @@
 
 
-//ship class or factory
+
 
 
 export class Ship {
-    constructor() {
+    constructor(length) {
         this.length = length;
-        this.hits = null;
-        this.sunk = null;
+        this.hits = 0;
+        this.sunk = false;
     }
 
-    hit() {
-        //if hit is detected this.hits +1
+    hit(key) {
+        this.hits += 1;
+        this.isSunk();
+        //if i update with each hit to shipHits i can do a 
+        //comparison statement to say if shipHits === shipLengths, then sunk
 
+        // if (key == 'carrier') {
+        //     shipHits.set('carrier', shipHits.get('carrier') + 1);
+        //     this.isSunk();
+        // } else if (key == 'battleship') {
+        //     shipHits.set('battleship', shipHits.get('battleship') + 1);
+        //     this.isSunk();
+        // } else if (key == 'cruiser') {
+        //     shipHits.set('cruiser', shipHits.get('cruiser') + 1);
+        //     this.isSunk();
+        // } else if (key == 'submarine') {
+        //     shipHits.set('submarine', shipHits.get('submarine') + 1);
+        //     this.isSunk();
+        // } else if (key == 'patrol') {
+        //     shipHits.set('patrol', shipHits.get('patrol') + 1);
+        //     this.isSunk();
+        // }
     }
 
     isSunk() {
-        //calculates whether a ship is considered sunk based on its length
-        //and the number of hits it has received
+        if (this.hits === this.length) {
+            return this.sunk = true;
+        };
     }
+
+
 }
 
+
+const ships = new Map([
+    ['carrier', new Ship(5)],
+    ['battleship', new Ship(4)],
+    ['cruiser', new Ship(3)],
+    ['submarine', new Ship(3)],
+    ['patrol', new Ship(1)]
+]);
+
+
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+// ships.get('carrier').hit();
+
+
+
+// console.log(ships);
+
+// console.log(hit);
 
 
 
@@ -33,7 +76,6 @@ export class Gameboard {
     
     //receiveAttack function that takes a pair of coordinates, determines
 
-
     //if attack hit a ship then sends hit function to the correct ship or 
     //records coordinates of the missed shot
 
@@ -43,8 +85,6 @@ export class Gameboard {
 
 }
 
-
-
 export class Player {
 
     //real player vs computer player
@@ -52,8 +92,6 @@ export class Player {
     //each player object contain its own gameboard
 
 }
-
-
 
 
 //import classes/factories into another file, drive the game using event
