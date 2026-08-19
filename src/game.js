@@ -39,23 +39,7 @@ const ships = new Map([
 // console.log(hit);
 
 
-export class Gameboard {
 
-    
-
-    //place ships at specific coordinates by calling ship class
-    
-    
-    //receiveAttack function that takes a pair of coordinates, determines
-
-    //if attack hit a ship then sends hit function to the correct ship or 
-    //records coordinates of the missed shot
-
-    //gameboard should be able to keep track of missed shots
-
-    //gameboard should be able to report if all ships are sunk or not
-
-}
 
 export class Player {
 
