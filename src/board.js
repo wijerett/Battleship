@@ -32,31 +32,28 @@ export class Gameboard {
             board.push(rowArray);
             
         }
-        board.push(ships);
+        //board.push(ships);
         return board;
     }
 
+    placeShips() {
+        if (this.ships !== []) {
+            //let number in length determine how many arrays the ship encompasses
+            let length = ships.get(length);
+            //somehow get length with gameboard.ships.length and tell program to
+            //split ship object into multiple pieces to fill in how many array objects
+            //equal to the length of that object
+        }
+    }
 
-    //place ships at specific coordinates by calling ship class
-    
-    
-    //receiveAttack function that takes a pair of coordinates, determines
-
-    //if attack hit a ship then sends hit function to the correct ship or 
-    //records coordinates of the missed shot
-
-    //gameboard should be able to keep track of missed shots
-
-    //gameboard should be able to report if all ships are sunk or not
-
-    coordinates() {
-        
+    coordinates() {   
     }
 
     //place ships at specific coordinates by calling ship class
     
     
     //receiveAttack function that takes a pair of coordinates, determines
+
     //if attack hit a ship then sends hit function to the correct ship or 
     //records coordinates of the missed shot
 
@@ -70,5 +67,7 @@ export class Gameboard {
 
 
 let game = new Gameboard();
+game.ships = ships;
 
 console.log(game);
+
