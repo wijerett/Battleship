@@ -3,6 +3,8 @@ import { Ship } from "./game.js";
 
 
 
+const numberOfCells = ship.length;
+
 const ships = new Map([
     ['carrier', new Ship(5)],
     ['battleship', new Ship(4)],
@@ -36,14 +38,26 @@ export class Gameboard {
         return board;
     }
 
-    placeShips() {
-        if (this.ships !== []) {
+    placeShips(ship, length) {
+        
+        if (board[row][col].ship === null) {
+            for (let row = 0; row < this.size; row++) {
+                
+                for (let col = 0; col < this.size; col++) {
+
+                }
+            }
+        }
+
+        //write the same ship instance into every cell it occupies
+        //how do i access individual cells
+        
             //let number in length determine how many arrays the ship encompasses
-            let length = ships.get(length);
+            
             //somehow get length with gameboard.ships.length and tell program to
             //split ship object into multiple pieces to fill in how many array objects
             //equal to the length of that object
-        }
+        
     }
 
     coordinates() {   
@@ -63,7 +77,9 @@ export class Gameboard {
 
 }
 
-
+for (const [name, ship] of ships) {
+    console.log(ship.length);
+}
 
 
 let game = new Gameboard();
