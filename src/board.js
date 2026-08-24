@@ -3,7 +3,7 @@ import { Ship } from "./game.js";
 
 
 
-const numberOfCells = ship.length;
+// const numberOfCells = ship.length;
 
 const ships = new Map([
     ['carrier', new Ship(5)],
@@ -20,7 +20,7 @@ export class Gameboard {
         this.missedAttacks = [];
     }
 
-    buildBoard() {
+    buildBoard(ship, length, coordinates) {
         const board = [];
 
         for (let row = 0; row < this.size; row++) {
@@ -34,17 +34,22 @@ export class Gameboard {
             board.push(rowArray);
             
         }
-        //board.push(ships);
+        this.placeShips(ship, length);
         return board;
     }
 
-    placeShips(ship, length) {
+    placeShips(ship) {
+        let array = this.buildBoard(ship, length, coordinates);
         
-        if (board[row][col].ship === null) {
+        if (this.board === null) {
+            for (const [name, ship] of ships) {
+                return ship.length;
+            }
             for (let row = 0; row < this.size; row++) {
-                
+                let numberOfArrays = ship.length;
                 for (let col = 0; col < this.size; col++) {
-
+                    shipLength = ship.length * numberOfArrays;
+                    array.push(shipLength);
                 }
             }
         }
@@ -77,13 +82,17 @@ export class Gameboard {
 
 }
 
-for (const [name, ship] of ships) {
-    console.log(ship.length);
-}
+
+
+
 
 
 let game = new Gameboard();
 game.ships = ships;
 
+// let placeShip = game.placeShips('carrier', 5)
+
 console.log(game);
+
+// console.log(JSON.stringify(game));
 
