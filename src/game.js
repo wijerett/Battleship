@@ -21,13 +21,6 @@ export class Ship {
     };    
 };
 
-const ships = new Map([
-    ['carrier', new Ship(5)],
-    ['battleship', new Ship(4)],
-    ['cruiser', new Ship(3)],
-    ['submarine', new Ship(3)],
-    ['patrol', new Ship(1)]
-]);
 
 
 // ships.get('carrier').hit();

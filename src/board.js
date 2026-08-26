@@ -3,21 +3,20 @@ import { Ship } from "./game.js";
 
 
 
-// const numberOfCells = ship.length;
 
-const ships = new Map([
-    ['carrier', new Ship(5)],
-    ['battleship', new Ship(4)],
-    ['cruiser', new Ship(3)],
-    ['submarine', new Ship(3)],
-    ['patrol', new Ship(1)]
+
+const shipTypes = new Map([
+    ['carrier', 5],
+    ['battleship', 4],
+    ['cruiser', 3],
+    ['submarine', 3],
+    ['patrol', 1]
 ]);
 export class Gameboard {
-    constructor(size = 6) {
+    constructor(size = 12) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
-        this.missedAttacks = [];
     }
 
     buildBoard(ship, length, coordinates) {
@@ -26,44 +25,60 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({
-                    ship: null,
-                    hit: false,
-                });
+                rowArray.push({ ship: null, hit: false });
             }
             board.push(rowArray);
-            
         }
-        this.placeShips(ship, length);
+        
         return board;
     }
 
-    placeShips(ship) {
-        let array = this.buildBoard(ship, length, coordinates);
-        
-        if (this.board === null) {
-            for (const [name, ship] of ships) {
-                return ship.length;
-            }
-            for (let row = 0; row < this.size; row++) {
-                let numberOfArrays = ship.length;
-                for (let col = 0; col < this.size; col++) {
-                    shipLength = ship.length * numberOfArrays;
-                    array.push(shipLength);
-                }
-            }
-        }
+    placeShips(length, row, col, direction) {
+        const ship = new Ship(length);
+        const coordinates = [];
+        for (let i = 0; i < ship.length; i++) {
+            const r = direction === 'vertical' ? row + i : row;
+            const c = direction === 'horizontal' ? col + i : col;
 
-        //write the same ship instance into every cell it occupies
-        //how do i access individual cells
-        
-            //let number in length determine how many arrays the ship encompasses
-            
-            //somehow get length with gameboard.ships.length and tell program to
-            //split ship object into multiple pieces to fill in how many array objects
-            //equal to the length of that object
-        
+            if (r >= this.size || c >= this.size) {
+                throw new Error('Ship out of bounds');
+            }
+            if (this.board[r][c].ship !== null) {
+                throw new Error('Cell already occupied');
+            }
+            coordinates.push([r, c]);
+        }
+        coordinates.forEach(([r, c]) => {
+            this.board[r][c].ship = ship;
+        });
+        this.ships.push(ship);
+        return ship;
     }
+
+    // standardFleet(gameboard) {
+    //     board.placeShips(5, 0, 0, 'horizontal');
+    //     board.placeShips(4, 1, 0, 'horizontal');
+    //     board.placeShips(3, 2, 0, 'horizontal');
+    //     board.placeShips(3, 3, 0, 'horizontal');
+    //     board.placeShips(1, 4, 0, 'horizontal');
+    // }
+
+    printBoard() {
+    let output = '';
+    for (let row = 0; row < this.size; row++) {
+        let rowStr = '';
+        for (let col = 0; col < this.size; col++) {
+            const cell = this.board[row][col];
+            if (cell.hit && cell.ship) rowStr += 'X ';
+            else if (cell.hit) rowStr += 'O ';
+            else if (cell.ship) rowStr += 'S ';
+            else rowStr += '. ';
+        }
+        output += rowStr + '\n';
+    }
+    console.log(output);
+}
+
 
     coordinates() {   
     }
@@ -88,11 +103,15 @@ export class Gameboard {
 
 
 let game = new Gameboard();
-game.ships = ships;
 
-// let placeShip = game.placeShips('carrier', 5)
+game.placeShips(5, 0, 0, 'vertical');
+game.placeShips(4, 0, 2, 'vertical');
+game.placeShips(4, 7, 0, 'horizontal');
+game.placeShips(2, 0, 6, 'vertical');
+game.placeShips(1, 10, 0, 'horizontal');
 
-console.log(game);
+game.printBoard();
 
-// console.log(JSON.stringify(game));
+
+
 

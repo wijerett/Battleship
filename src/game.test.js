@@ -1,6 +1,8 @@
 import { Ship } from "./game";
+import { Gameboard } from "./board";
 
 
+const board = new Gameboard();
 
 const ship = new Ship();
 
@@ -30,5 +32,5 @@ test('is sunk', () => {
     expect(ships.get('carrier')).toEqual({ length: 5, hits: 5, sunk: true })
 });
 
-
+test('')
 
