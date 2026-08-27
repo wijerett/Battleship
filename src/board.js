@@ -19,7 +19,7 @@ export class Gameboard {
         this.ships = [];
     }
 
-    buildBoard(ship, length, coordinates) {
+    buildBoard() {
         const board = [];
 
         for (let row = 0; row < this.size; row++) {
@@ -63,21 +63,21 @@ export class Gameboard {
     //     board.placeShips(1, 4, 0, 'horizontal');
     // }
 
-    printBoard() {
-    let output = '';
-    for (let row = 0; row < this.size; row++) {
-        let rowStr = '';
-        for (let col = 0; col < this.size; col++) {
-            const cell = this.board[row][col];
-            if (cell.hit && cell.ship) rowStr += 'X ';
-            else if (cell.hit) rowStr += 'O ';
-            else if (cell.ship) rowStr += 'S ';
-            else rowStr += '. ';
-        }
-        output += rowStr + '\n';
-    }
-    console.log(output);
-}
+//     printBoard() {
+//     let output = '';
+//     for (let row = 0; row < this.size; row++) {
+//         let rowStr = '';
+//         for (let col = 0; col < this.size; col++) {
+//             const cell = this.board[row][col];
+//             if (cell.hit && cell.ship) rowStr += 'X ';
+//             else if (cell.hit) rowStr += 'O ';
+//             else if (cell.ship) rowStr += 'S ';
+//             else rowStr += '. ';
+//         }
+//         output += rowStr + '\n';
+//     }
+//     console.log(output);
+// }
 
 
     coordinates() {   
@@ -102,15 +102,15 @@ export class Gameboard {
 
 
 
-let game = new Gameboard();
+// let game = new Gameboard();
 
-game.placeShips(5, 0, 0, 'vertical');
-game.placeShips(4, 0, 2, 'vertical');
-game.placeShips(4, 7, 0, 'horizontal');
-game.placeShips(2, 0, 6, 'vertical');
-game.placeShips(1, 10, 0, 'horizontal');
+// game.placeShips(5, 0, 0, 'vertical');
+// game.placeShips(4, 0, 2, 'vertical');
+// game.placeShips(4, 7, 0, 'horizontal');
+// game.placeShips(2, 0, 6, 'vertical');
+// game.placeShips(1, 10, 0, 'horizontal');
 
-game.printBoard();
+// game.printBoard();
 
 
 

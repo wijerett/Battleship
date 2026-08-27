@@ -1,5 +1,6 @@
 import { Ship } from "./game";
 import { Gameboard } from "./board";
+import { CHAR_CARRIAGE_RETURN } from "picomatch/lib/constants";
 
 
 const board = new Gameboard();
@@ -32,5 +33,26 @@ test('is sunk', () => {
     expect(ships.get('carrier')).toEqual({ length: 5, hits: 5, sunk: true })
 });
 
-test('')
+test('board creates empty grid', () => {
+    const board = new Gameboard(6);
+    expect(board.board.length).toBe(6);
+    expect(board.board[0].length).toBe(6);
+    expect(board.board[0][0]).toEqual({ ship: null, hit: false });
+});
 
+test('places ships in the correct cells', () => {
+    const board = new Gameboard(6);
+    const ship = board.placeShips(4, 0, 0, 'horizontal');
+
+    expect(board.board[0][0].ship).toBe(ship);
+    expect(board.board[0][3].ship).toBe(ship);
+    expect(board.board[0][4].ship).toBeNull();
+});
+
+test('track ships on the board', () => {
+    const board = new Gameboard(6);
+    const ship = board.placeShips(4, 0, 0, 'horizontal');
+
+    expect(board.ships).toContain(ship);
+    expect(ship.length).toBe(4);
+})
