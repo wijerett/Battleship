@@ -55,13 +55,26 @@ export class Gameboard {
         return ship;
     }
 
-    // standardFleet(gameboard) {
-    //     board.placeShips(5, 0, 0, 'horizontal');
-    //     board.placeShips(4, 1, 0, 'horizontal');
-    //     board.placeShips(3, 2, 0, 'horizontal');
-    //     board.placeShips(3, 3, 0, 'horizontal');
-    //     board.placeShips(1, 4, 0, 'horizontal');
-    // }
+
+
+    receiveAttack (row, col) {
+        
+        if (this.board.ship !== null) {
+            Ship.hit()
+        }
+    }
+
+    //place ships at specific coordinates by calling ship class
+    
+    
+    //receiveAttack function that takes a pair of coordinates, determines
+
+    //if attack hit a ship then sends hit function to the correct ship or 
+    //records coordinates of the missed shot
+
+    //gameboard should be able to keep track of missed shots
+
+    //gameboard should be able to report if all ships are sunk or not
 
 //     printBoard() {
 //     let output = '';
@@ -80,22 +93,8 @@ export class Gameboard {
 // }
 
 
-    coordinates() {   
-    }
-
-    //place ships at specific coordinates by calling ship class
-    
-    
-    //receiveAttack function that takes a pair of coordinates, determines
-
-    //if attack hit a ship then sends hit function to the correct ship or 
-    //records coordinates of the missed shot
-
-    //gameboard should be able to keep track of missed shots
-
-    //gameboard should be able to report if all ships are sunk or not
-
 }
+
 
 
 
@@ -111,7 +110,5 @@ export class Gameboard {
 // game.placeShips(1, 10, 0, 'horizontal');
 
 // game.printBoard();
-
-
 
 

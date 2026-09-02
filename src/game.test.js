@@ -55,4 +55,11 @@ test('track ships on the board', () => {
 
     expect(board.ships).toContain(ship);
     expect(ship.length).toBe(4);
+});
+
+test('ship accepts hit', () => {
+    const board = new Gameboard(6);
+    const ship = board.placeShips(4, 0, 0, 'horizontal');
+
+    expect(board.ships).toContain({ hits: 1 });
 })
