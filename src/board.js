@@ -5,13 +5,15 @@ import { Ship } from "./game.js";
 
 
 
-const shipTypes = new Map([
-    ['carrier', 5],
-    ['battleship', 4],
-    ['cruiser', 3],
-    ['submarine', 3],
-    ['patrol', 1]
-]);
+// const shipTypes = new Map([
+//     ['carrier', 5],
+//     ['battleship', 4],
+//     ['cruiser', 3],
+//     ['submarine', 3],
+//     ['patrol', 1]
+// ]);
+
+
 export class Gameboard {
     constructor(size = 12) {
         this.size = size;
@@ -36,6 +38,7 @@ export class Gameboard {
     placeShips(length, row, col, direction) {
         const ship = new Ship(length);
         const coordinates = [];
+
         for (let i = 0; i < ship.length; i++) {
             const r = direction === 'vertical' ? row + i : row;
             const c = direction === 'horizontal' ? col + i : col;
@@ -92,24 +95,18 @@ export class Gameboard {
 //     }
 //     console.log(output);
 // }
-
-
 }
-
-
-
-
-
 
 
 // let game = new Gameboard();
 
-// game.placeShips(5, 0, 0, 'vertical');
-// game.placeShips(4, 0, 2, 'vertical');
-// game.placeShips(4, 7, 0, 'horizontal');
-// game.placeShips(2, 0, 6, 'vertical');
-// game.placeShips(1, 10, 0, 'horizontal');
+// game.placeShips(5, 0, 0, 'vertical', 'carrier');
+// game.placeShips(4, 0, 2, 'vertical', 'battleship');
+// game.placeShips(4, 7, 0, 'horizontal', 'cruiser');
+// game.placeShips(2, 0, 6, 'vertical', 'submarine');
+// game.placeShips(1, 10, 0, 'horizontal', 'patrol');
 
-// game.printBoard();
+//game.printBoard();
 
 
+// console.log(game);
