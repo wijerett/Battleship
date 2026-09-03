@@ -16,23 +16,10 @@ export class Ship {
 
     isSunk() {
         if (this.hits === this.length) {
-            alert("hit and sink");
             return this.sunk = true;
         };
     };    
 };
-
-
-
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// console.log(ships);
-// console.log(hit);
-
-
 
 
 export class Player {

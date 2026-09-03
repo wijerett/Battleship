@@ -54,6 +54,7 @@ export class Gameboard {
         this.ships.push(ship);
         return ship;
     }
+    //i need to add a way to name each ship as its placed to reference later
 
 
 

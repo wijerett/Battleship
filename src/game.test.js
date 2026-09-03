@@ -60,6 +60,7 @@ test('track ships on the board', () => {
 test('ship accepts hit', () => {
     const board = new Gameboard(6);
     const ship = board.placeShips(4, 0, 0, 'horizontal');
-
-    expect(board.ships).toContain({ hits: 1 });
-})
+    ship.hit();
+    ship.hit();
+    expect(board.ships).toEqual([{ "hits": 2, "length": 4, "sunk": false }]);
+});
