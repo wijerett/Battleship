@@ -64,6 +64,10 @@ export class Gameboard {
         return cell.attacked;
     }
 
+    allShipsSunk() {
+        return this.ships.every(ship => ship.isSunk());
+    }
+
     //place ships at specific coordinates by calling ship class
     
     

@@ -115,3 +115,12 @@ test('unable to attack a cell twice', () => {
         board.receiveAttack(2, 2);
     }).toThrow('Cell already attacked');
 });
+
+test('check if all ships are sunk', () => {
+    const board = new Gameboard(6);
+    const ship = board.placeShips(4, 0, 0, 'vertical');
+    const ship2 = board.placeShips(1, 2, 2, 'vertical');
+    board.receiveAttack(2, 2);
+    expect(board.allShipsSunk()).toBe(false);
+});
+
