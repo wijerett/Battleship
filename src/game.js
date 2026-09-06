@@ -9,7 +9,7 @@ export class Ship {
         this.sunk = false;
     }
 
-    hit(key) {
+    hit() {
         this.hits += 1;
         this.isSunk();
     }
@@ -18,27 +18,8 @@ export class Ship {
         if (this.hits === this.length) {
             return this.sunk = true;
         };
-    };    
+    };
 };
-
-const ships = new Map([
-    ['carrier', new Ship(5)],
-    ['battleship', new Ship(4)],
-    ['cruiser', new Ship(3)],
-    ['submarine', new Ship(3)],
-    ['patrol', new Ship(1)]
-]);
-
-
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// ships.get('carrier').hit();
-// console.log(ships);
-// console.log(hit);
-
-
 
 
 export class Player {

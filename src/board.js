@@ -2,16 +2,8 @@
 import { Ship } from "./game.js";
 
 
-
-const ships = new Map([
-    ['carrier', new Ship(5)],
-    ['battleship', new Ship(4)],
-    ['cruiser', new Ship(3)],
-    ['submarine', new Ship(3)],
-    ['patrol', new Ship(1)]
-]);
 export class Gameboard {
-    constructor(size = 6) {
+    constructor(size = 12) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -24,29 +16,56 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({
-                    ship: null,
-                    hit: false,
-                });
+                rowArray.push({ ship: null, hit: "" });
             }
             board.push(rowArray);
-            
         }
-        //board.push(ships);
         return board;
-    }
+    };
 
-    placeShips() {
-        if (this.ships !== []) {
-            //let number in length determine how many arrays the ship encompasses
-            let length = ships.get(length);
-            //somehow get length with gameboard.ships.length and tell program to
-            //split ship object into multiple pieces to fill in how many array objects
-            //equal to the length of that object
+    placeShips(length, row, col, direction) {
+        const ship = new Ship(length);
+        const coordinates = [];
+
+        for (let i = 0; i < ship.length; i++) {
+            const r = direction === 'vertical' ? row + i : row;
+            const c = direction === 'horizontal' ? col + i : col;
+
+            if (r >= this.size || c >= this.size) {
+                throw new Error('Ship out of bounds');
+            }
+            if (this.board[r][c].ship !== null) {
+                throw new Error('Cell already occupied');
+            }
+            coordinates.push([r, c]);
         }
+        coordinates.forEach(([r, c]) => {
+            this.board[r][c].ship = ship;
+        });
+        this.ships.push(ship);
+        return ship;
     }
 
-    coordinates() {   
+
+    receiveAttack(row, col) {
+        const cell = this.board[row][col];
+
+        if (cell.attacked) {
+            throw new Error('Cell already attacked');
+        }
+
+        if (cell.ship) {
+            cell.ship.hit();
+        } else {
+            this.missedAttacks.push([row, col]);
+        };
+        cell.attacked = true;
+        // console.log(this.missedAttacks);
+        return cell.attacked;
+    }
+
+    allShipsSunk() {
+        return this.ships.every(ship => ship.isSunk());
     }
 
     //place ships at specific coordinates by calling ship class
@@ -62,12 +81,3 @@ export class Gameboard {
     //gameboard should be able to report if all ships are sunk or not
 
 }
-
-
-
-
-let game = new Gameboard();
-game.ships = ships;
-
-console.log(game);
-
