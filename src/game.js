@@ -7,16 +7,11 @@ export class Ship {
         this.length = length;
         this.hits = 0;
         this.sunk = false;
-        // this.name = this.name;
     }
 
-    //name ships as they are created
-
-    hit(row, col) {
-
+    hit() {
         this.hits += 1;
         this.isSunk();
-        //needs to accept coordinates to call ship.hit()
     }
 
     isSunk() {
@@ -24,7 +19,6 @@ export class Ship {
             return this.sunk = true;
         };
     };
-
 };
 
 

@@ -2,23 +2,12 @@
 import { Ship } from "./game.js";
 
 
-
-
-
-// const shipTypes = new Map([
-//     ['carrier', 5],
-//     ['battleship', 4],
-//     ['cruiser', 3],
-//     ['submarine', 3],
-//     ['patrol', 1]
-// ]);
-
-
 export class Gameboard {
     constructor(size = 12) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
+        this.missedAttacks = [];
     }
 
     buildBoard() {
@@ -27,13 +16,12 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({ ship: null, hit: false });
+                rowArray.push({ ship: null, hit: "" });
             }
             board.push(rowArray);
         }
-        
         return board;
-    }
+    };
 
     placeShips(length, row, col, direction) {
         const ship = new Ship(length);
@@ -57,15 +45,23 @@ export class Gameboard {
         this.ships.push(ship);
         return ship;
     }
-    //i need to add a way to name each ship as its placed to reference later
 
 
+    receiveAttack(row, col) {
+        const cell = this.board[row][col];
 
-    receiveAttack (row, col) {
-        
-        if (this.board.ship !== null) {
-            Ship.hit()
+        if (cell.attacked) {
+            throw new Error('Cell already attacked');
         }
+
+        if (cell.ship) {
+            cell.ship.hit();
+        } else {
+            this.missedAttacks.push([row, col]);
+        };
+        cell.attacked = true;
+        // console.log(this.missedAttacks);
+        return cell.attacked;
     }
 
     //place ships at specific coordinates by calling ship class
@@ -80,33 +76,4 @@ export class Gameboard {
 
     //gameboard should be able to report if all ships are sunk or not
 
-//     printBoard() {
-//     let output = '';
-//     for (let row = 0; row < this.size; row++) {
-//         let rowStr = '';
-//         for (let col = 0; col < this.size; col++) {
-//             const cell = this.board[row][col];
-//             if (cell.hit && cell.ship) rowStr += 'X ';
-//             else if (cell.hit) rowStr += 'O ';
-//             else if (cell.ship) rowStr += 'S ';
-//             else rowStr += '. ';
-//         }
-//         output += rowStr + '\n';
-//     }
-//     console.log(output);
-// }
 }
-
-
-// let game = new Gameboard();
-
-// game.placeShips(5, 0, 0, 'vertical', 'carrier');
-// game.placeShips(4, 0, 2, 'vertical', 'battleship');
-// game.placeShips(4, 7, 0, 'horizontal', 'cruiser');
-// game.placeShips(2, 0, 6, 'vertical', 'submarine');
-// game.placeShips(1, 10, 0, 'horizontal', 'patrol');
-
-//game.printBoard();
-
-
-// console.log(game);
