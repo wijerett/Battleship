@@ -1,7 +1,6 @@
 
 import { Ship } from "./game.js";
 
-
 export class Gameboard {
     constructor(size = 12) {
         this.size = size;

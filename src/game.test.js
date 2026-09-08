@@ -1,6 +1,6 @@
-import { Ship } from "./game";
-import { Gameboard } from "./board";
-import { CHAR_CARRIAGE_RETURN } from "picomatch/lib/constants";
+import { Ship } from "./game.js";
+import { Gameboard } from "./board.js";
+import { Player } from "./player.js";
 
 
 const board = new Gameboard();
@@ -124,3 +124,7 @@ test('check if all ships are sunk', () => {
     expect(board.allShipsSunk()).toBe(false);
 });
 
+test('player tracks ships inside', () => {
+    const player1 = new Player();
+    expect(player1).toBeTruthy();
+});
