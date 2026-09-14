@@ -2,7 +2,7 @@
 import { Ship } from "./game.js";
 
 export class Gameboard {
-    constructor(size = 12) {
+    constructor(size = 10) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];

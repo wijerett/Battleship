@@ -126,5 +126,10 @@ test('check if all ships are sunk', () => {
 
 test('player tracks ships inside', () => {
     const player1 = new Player();
+    board.placeShips(1, 0, 0, 'horizontal');
+    board.placeShips(3, 1, 0, 'horizontal');
+    player1.playerBoard.push(board);
+    player1.playerBoard.push(player1.board);
+    console.log(player1);
     expect(player1).toBeTruthy();
 });
