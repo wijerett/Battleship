@@ -37,7 +37,7 @@ test('board creates empty grid', () => {
     const board = new Gameboard(6);
     expect(board.board.length).toBe(6);
     expect(board.board[0].length).toBe(6);
-    expect(board.board[0][0]).toEqual({ ship: null, hit: "" });
+    expect(board.board[0][0]).toEqual({ ship: null, hit: false });
 });
 
 test('places ships in the correct cells', () => {
@@ -124,12 +124,15 @@ test('check if all ships are sunk', () => {
     expect(board.allShipsSunk()).toBe(false);
 });
 
-test('player tracks ships inside', () => {
+test('player class tracks ships inside', () => {
     const player1 = new Player();
-    board.placeShips(1, 0, 0, 'horizontal');
-    board.placeShips(3, 1, 0, 'horizontal');
-    player1.playerBoard.push(board);
-    player1.playerBoard.push(player1.board);
-    console.log(player1);
     expect(player1).toBeTruthy();
+});
+
+test('player attack runs', () => {
+    const player = new Player();
+    const opponent = new Player();
+    player.opponentBoard = opponent.board;
+    player.attack(0, 0);
+    expect(opponent.board.board[0][0].attacked).toBe(true);
 });

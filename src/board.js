@@ -2,7 +2,7 @@
 import { Ship } from "./game.js";
 
 export class Gameboard {
-    constructor(size = 6) {
+    constructor(size = 5) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -15,7 +15,7 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({ ship: null, hit: "" });
+                rowArray.push({ ship: null, hit: false });
             }
             board.push(rowArray);
         }
@@ -47,16 +47,16 @@ export class Gameboard {
 
 
     receiveAttack(row, col) {
-        let hit = this.ships.hit();
-        hit++;
+        
         const cell = this.board[row][col];
-
         if (cell.attacked) {
             throw new Error('Cell already attacked');
         }
 
         if (cell.ship) {
             cell.ship.hit();
+            cell.hit = cell.ship.hits;
+            cell.sunk = cell.ship.isSunk();
         } else {
             this.missedAttacks.push([row, col]);
         };
