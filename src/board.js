@@ -2,7 +2,7 @@
 import { Ship } from "./game.js";
 
 export class Gameboard {
-    constructor(size = 10) {
+    constructor(size = 6) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -47,6 +47,8 @@ export class Gameboard {
 
 
     receiveAttack(row, col) {
+        let hit = this.ships.hit();
+        hit++;
         const cell = this.board[row][col];
 
         if (cell.attacked) {
