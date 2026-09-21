@@ -1,9 +1,8 @@
 
 import { Ship } from "./game.js";
 
-
 export class Gameboard {
-    constructor(size = 12) {
+    constructor(size = 5) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -16,7 +15,7 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({ ship: null, hit: "" });
+                rowArray.push({ ship: null });
             }
             board.push(rowArray);
         }
@@ -48,36 +47,24 @@ export class Gameboard {
 
 
     receiveAttack(row, col) {
+        
         const cell = this.board[row][col];
-
         if (cell.attacked) {
             throw new Error('Cell already attacked');
         }
 
         if (cell.ship) {
             cell.ship.hit();
+            cell.hit = cell.ship.hits;
+            cell.sunk = cell.ship.isSunk();
         } else {
             this.missedAttacks.push([row, col]);
         };
         cell.attacked = true;
-        // console.log(this.missedAttacks);
         return cell.attacked;
     }
 
     allShipsSunk() {
         return this.ships.every(ship => ship.isSunk());
     }
-
-    //place ships at specific coordinates by calling ship class
-    
-    
-    //receiveAttack function that takes a pair of coordinates, determines
-
-    //if attack hit a ship then sends hit function to the correct ship or 
-    //records coordinates of the missed shot
-
-    //gameboard should be able to keep track of missed shots
-
-    //gameboard should be able to report if all ships are sunk or not
-
-}
+};

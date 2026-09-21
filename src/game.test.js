@@ -1,6 +1,6 @@
-import { Ship } from "./game";
-import { Gameboard } from "./board";
-import { CHAR_CARRIAGE_RETURN } from "picomatch/lib/constants";
+import { Ship } from "./game.js";
+import { Gameboard } from "./board.js";
+import { Player } from "./player.js";
 
 
 const board = new Gameboard();
@@ -37,7 +37,7 @@ test('board creates empty grid', () => {
     const board = new Gameboard(6);
     expect(board.board.length).toBe(6);
     expect(board.board[0].length).toBe(6);
-    expect(board.board[0][0]).toEqual({ ship: null, hit: "" });
+    expect(board.board[0][0]).toEqual({ ship: null });
 });
 
 test('places ships in the correct cells', () => {
@@ -124,3 +124,39 @@ test('check if all ships are sunk', () => {
     expect(board.allShipsSunk()).toBe(false);
 });
 
+test('player class tracks ships inside', () => {
+    const player1 = new Player();
+    expect(player1).toBeTruthy();
+});
+
+test('player attacking opponent runs', () => {
+    const player = new Player();
+    player.setup();
+    const opponent = new Player();
+    opponent.setup();
+    player.opponentBoard = opponent.board;
+    player.attack(0, 0);
+    expect(opponent.board.board[0][0].attacked).toBe(true);
+    console.log(player.board.board);
+    console.log(opponent.board.board);
+});
+
+test('tracks sunk ships', () => {
+    const player = new Player();
+    player.setup();
+    const opponent = new Player();
+    opponent.setup();
+    player.opponentBoard = opponent.board;
+    opponent.opponentBoard = player.board;
+    player.attack(0, 0);
+    player.attack(0, 1);
+    player.attack(0, 2);
+    player.attack(0, 3);
+    player.attack(4, 0);
+    opponent.attack(0, 0);
+    opponent.attack(0, 1);
+    opponent.attack(4, 4)
+    expect(opponent.board.board[0][0].attacked).toBe(true);
+    console.log(player.board.board);
+    console.log(opponent.board.board);
+});

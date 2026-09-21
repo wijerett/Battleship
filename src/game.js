@@ -1,7 +1,4 @@
 
-
-
-
 export class Ship {
     constructor(length) {
         this.length = length;
@@ -15,24 +12,10 @@ export class Ship {
     }
 
     isSunk() {
-        if (this.hits === this.length) {
-            return this.sunk = true;
-        };
+        if (this.hits >= this.length) {
+            this.sunk = true;
+        }
+        return this.sunk;
     };
 };
 
-
-export class Player {
-
-    //real player vs computer player
-
-    //each player object contain its own gameboard
-
-}
-
-
-//import classes/factories into another file, drive the game using event
-//listeners to interact with the objects. create a module that helps 
-//manage action that should happen in the DOM
-
-//Do all of the above before crafting user interface
