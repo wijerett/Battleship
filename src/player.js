@@ -27,13 +27,17 @@ export class Player {
     }
 }
 
-let player = new Player();
-player.setup();
-// player.attack(0, 0);
+// const player = new Player();
+
+// const opponent = new Player();
+// player.setup();
+// opponent.setup();
+// opponent.attack(0, 0);
 // player.attack(0, 1);
-// player.attack(0, 2);
+// opponent.attack(0, 2);
 // player.attack(0, 3);
-// player.attack(4, 0);
+// opponent.attack(4, 0);
 
 
-console.log(player.board.board);
+// console.log(player.board.board);
+// console.log(opponent.board.board);

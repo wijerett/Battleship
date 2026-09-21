@@ -129,10 +129,33 @@ test('player class tracks ships inside', () => {
     expect(player1).toBeTruthy();
 });
 
-test('player attack runs', () => {
+test('player attacking opponent runs', () => {
     const player = new Player();
+    player.setup();
     const opponent = new Player();
+    opponent.setup();
     player.opponentBoard = opponent.board;
     player.attack(0, 0);
     expect(opponent.board.board[0][0].attacked).toBe(true);
+    console.log(player.board.board);
+    console.log(opponent.board.board);
+});
+
+test('tracks sunk ships', () => {
+    const player = new Player();
+    player.setup();
+    const opponent = new Player();
+    opponent.setup();
+    player.opponentBoard = opponent.board;
+    opponent.opponentBoard = player.board;
+    player.attack(0, 0);
+    player.attack(0, 1);
+    player.attack(0, 2);
+    player.attack(0, 3);
+    player.attack(4, 0);
+    opponent.attack(0, 0);
+    opponent.attack(0, 1);
+    expect(opponent.board.board[0][0].attacked).toBe(true);
+    console.log(player.board.board);
+    console.log(opponent.board.board);
 });
