@@ -1,6 +1,5 @@
 
 
-
 import { Gameboard } from "./board.js";
 
 
@@ -26,18 +25,3 @@ export class Player {
         return this.opponentBoard.receiveAttack(row, col);
     }
 }
-
-// const player = new Player();
-
-// const opponent = new Player();
-// player.setup();
-// opponent.setup();
-// opponent.attack(0, 0);
-// player.attack(0, 1);
-// opponent.attack(0, 2);
-// player.attack(0, 3);
-// opponent.attack(4, 0);
-
-
-// console.log(player.board.board);
-// console.log(opponent.board.board);

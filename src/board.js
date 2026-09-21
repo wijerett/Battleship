@@ -15,7 +15,7 @@ export class Gameboard {
         for (let row = 0; row < this.size; row++) {
             const rowArray = [];
             for (let col = 0; col < this.size; col++) {
-                rowArray.push({ ship: null, hit: false });
+                rowArray.push({ ship: null });
             }
             board.push(rowArray);
         }

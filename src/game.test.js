@@ -37,7 +37,7 @@ test('board creates empty grid', () => {
     const board = new Gameboard(6);
     expect(board.board.length).toBe(6);
     expect(board.board[0].length).toBe(6);
-    expect(board.board[0][0]).toEqual({ ship: null, hit: false });
+    expect(board.board[0][0]).toEqual({ ship: null });
 });
 
 test('places ships in the correct cells', () => {
@@ -155,6 +155,7 @@ test('tracks sunk ships', () => {
     player.attack(4, 0);
     opponent.attack(0, 0);
     opponent.attack(0, 1);
+    opponent.attack(4, 4)
     expect(opponent.board.board[0][0].attacked).toBe(true);
     console.log(player.board.board);
     console.log(opponent.board.board);
