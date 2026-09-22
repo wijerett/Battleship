@@ -8,4 +8,6 @@ body {
 #board1, #board2 {
     gap: 20px;
     display: grid;
+    margin: 20px;
 }
+

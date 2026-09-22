@@ -5,11 +5,7 @@ import { Player } from "./player.js";
 import { Ship } from "./game.js";
 
 
-const startBtn = document.querySelector('#startBtn');
-
-
-startBtn.addEventListener('click', event => {
-    event.preventDefault();
+export function driveGame() {
     const player = new Player();
     player.setup();
     const opponent = new Player();
@@ -26,17 +22,9 @@ startBtn.addEventListener('click', event => {
     boardBox2.appendChild(board2);
     console.log(player.board.board);
     console.log(opponent.board.board);
+};
+
+const startBtn = document.querySelector('#startBtn');
+startBtn.addEventListener('click', event => {
+    driveGame();
 });
-
-
-
-export class driveGame {
-    constructor() {
-        this.player = new Player();
-        this.opponent = new Player();
-    }
-
-    round() {
-        
-    }
-}
