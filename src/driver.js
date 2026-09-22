@@ -1,3 +1,5 @@
+
+import "./styles.css";
 import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
 import { Ship } from "./game.js";
@@ -16,3 +18,5 @@ export class driveGame {
         
     }
 }
+
+console.log("hello");
