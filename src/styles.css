@@ -2,5 +2,10 @@
 
 
 body {
-    background-color: tan;
+    background-color: grey;
+}
+
+#board1, #board2 {
+    gap: 20px;
+    display: grid;
 }
