@@ -160,3 +160,4 @@ test('tracks sunk ships', () => {
     console.log(player.board.board);
     console.log(opponent.board.board);
 });
+

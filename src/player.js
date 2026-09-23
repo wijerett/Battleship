@@ -1,8 +1,4 @@
-
-
 import { Gameboard } from "./board.js";
-
-
 
 export class Player {
     constructor() {
@@ -10,8 +6,8 @@ export class Player {
         this.opponentBoard = null;
     }
 
-
     setup() {
+        this.board = new Gameboard();
         this.board.placeShips(4, 0, 0, 'horizontal');
         this.board.placeShips(3, 1, 0, 'horizontal');
         this.board.placeShips(3, 2, 0, 'horizontal');
@@ -24,4 +20,4 @@ export class Player {
     attack(row, col) {
         return this.opponentBoard.receiveAttack(row, col);
     }
-}
+};

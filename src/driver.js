@@ -2,29 +2,45 @@
 import "./styles.css";
 import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
-import { Ship } from "./game.js";
+import { renderBoard, boardListener } from "./render.js";
+
+
+const boardBox1 = document.getElementById('board1');
+const boardBox2 = document.getElementById('board2');
+const player = new Player();
+const opponent = new Player();
 
 
 export function driveGame() {
-    const player = new Player();
+
+    boardBox1.innerHTML = "";
+    boardBox2.innerHTML = "";
+
     player.setup();
-    const opponent = new Player();
     opponent.setup();
+
     player.opponentBoard = opponent.board;
     opponent.opponentBoard = player.board;
-    const board1 = document.createElement("div");
-    board1.innerHTML = player.board.board;
-    const boardBox1 = document.getElementById('board1');
-    boardBox1.appendChild(board1);
-    const board2 = document.createElement("div");
-    board2.innerHTML = opponent.board.board;
-    const boardBox2 = document.getElementById('board2');
-    boardBox2.appendChild(board2);
+
+    renderBoard(player.board, board1);
+    renderBoard(player.board, board2);
+
     console.log(player.board.board);
     console.log(opponent.board.board);
 };
 
 const startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', event => {
-    driveGame();
+    if (player.board.board || opponent.board.board)
+        driveGame();
+});
+
+boardListener(boardBox2, () => opponent.board, (row, col) => {
+    player.attack(row, col);
+    renderBoard(opponent.board, boardBox2);
+});
+
+boardListener(boardBox1, () => player.board, (row, col) => {
+    opponent.attack(row, col);
+    renderBoard(player.board, boardBox1);
 });

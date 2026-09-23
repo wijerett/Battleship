@@ -2,7 +2,7 @@
 import { Ship } from "./game.js";
 
 export class Gameboard {
-    constructor(size = 10) {
+    constructor(size = 8) {
         this.size = size;
         this.board = this.buildBoard();
         this.ships = [];
@@ -45,14 +45,11 @@ export class Gameboard {
         return ship;
     }
 
-
     receiveAttack(row, col) {
-        
         const cell = this.board[row][col];
         if (cell.attacked) {
-            throw new Error('Cell already attacked');
+            alert('Cell already attacked');
         }
-
         if (cell.ship) {
             cell.ship.hit();
             cell.hit = cell.ship.hits;
@@ -67,15 +64,4 @@ export class Gameboard {
     allShipsSunk() {
         return this.ships.every(ship => ship.isSunk());
     }
-
-    // boardListeners(gameboard) {
-    //     document.querySelectorAll('.cell').forEach(cell => {
-    //         cell.addEventListener('click', (e) => {
-    //             const row = Number(e.target.dataset.row);
-    //             const col = Number(e.target.dataset.row);
-    //             gameboard.receiveAttack(row,col);
-    //         });
-    //     });
-    // };
-    //not sure where to place this yet
 };
