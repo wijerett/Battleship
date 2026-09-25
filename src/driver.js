@@ -35,12 +35,16 @@ startBtn.addEventListener('click', event => {
         driveGame();
 });
 
-boardListener(boardBox2, () => opponent.board, (row, col) => {
-    player.attack(row, col);
-    renderBoard(opponent.board, boardBox2);
-});
+// boardListener(boardBox2, () => opponent.board, (row, col) => {
+//     player.attack(row, col);
+//     renderBoard(opponent.board, boardBox2);
+// });
+//second board listener, in case i want pvp
 
 boardListener(boardBox1, () => player.board, (row, col) => {
     opponent.attack(row, col);
     renderBoard(player.board, boardBox1);
+
+    player.computerAttack();
+    renderBoard(opponent.board, boardBox2);
 });
