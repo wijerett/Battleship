@@ -49,16 +49,20 @@ export class Gameboard {
         const cell = this.board[row][col];
         if (cell.attacked) {
             alert('Cell already attacked');
+            return { hit: false };
         }
+        let wasHit = false;
+
         if (cell.ship) {
             cell.ship.hit();
             cell.hit = cell.ship.hits;
             cell.sunk = cell.ship.isSunk();
+            wasHit = true;
         } else {
             this.missedAttacks.push([row, col]);
         };
         cell.attacked = true;
-        return cell.attacked;
+        return { hit: wasHit };
     }
 
     allShipsSunk() {

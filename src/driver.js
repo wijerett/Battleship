@@ -45,6 +45,8 @@ boardListener(boardBox1, () => player.board, (row, col) => {
     opponent.attack(row, col);
     renderBoard(player.board, boardBox1);
 
-    player.computerAttack();
+    
+    player.huntAttack(row, col);
+    
     renderBoard(opponent.board, boardBox2);
 });
