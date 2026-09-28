@@ -24,9 +24,6 @@ export function driveGame() {
 
     renderBoard(player.board, board1);
     renderBoard(player.board, board2);
-
-    console.log(player.board.board);
-    console.log(opponent.board.board);
 };
 
 const startBtn = document.querySelector('#startBtn');
@@ -39,14 +36,21 @@ startBtn.addEventListener('click', event => {
 //     player.attack(row, col);
 //     renderBoard(opponent.board, boardBox2);
 // });
+
 //second board listener, in case i want pvp
 
 boardListener(boardBox1, () => player.board, (row, col) => {
     opponent.attack(row, col);
     renderBoard(player.board, boardBox1);
-
+    if (player.board.allShipsSunk()) {
+        alert("Game Over: You win!");
+        return;
+    }
     
     player.huntAttack(row, col);
-    
     renderBoard(opponent.board, boardBox2);
+    if (opponent.board.allShipsSunk()) {
+        alert("Game Over: Computer wins");
+        return;
+    }
 });

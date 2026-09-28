@@ -1,4 +1,4 @@
-import { Gameboard } from "./board.js";
+
 
 
 export function renderBoard(gameboard, container) {

@@ -18,9 +18,6 @@ export class Player {
     //add (length, row, col, direction) so players can choose
     //location of ships
 
-    //i could add a method to do a random coordinate attack when it is
-    //the computer players turn and reference it in driver file
-
     attack(row, col) {
         return this.opponentBoard.receiveAttack(row, col);
     }
