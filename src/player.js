@@ -1,5 +1,17 @@
 import { Gameboard } from "./board.js";
 
+
+const submitBtn = document.querySelector('#submitBtn');
+const rowBox = document.querySelector('#rowBox');
+const colBox = document.querySelector('#colBox');
+const directionBox = document.querySelector('#directionBox');
+
+
+submitBtn.addEventListener('click', () => {
+    playerPlacements();
+
+});
+
 export class Player {
     constructor() {
         this.board = new Gameboard();
@@ -15,8 +27,25 @@ export class Player {
         this.board.placeShips(2, 3, 0, 'horizontal');
         this.board.placeShips(1, 4, 0, 'horizontal');
     }
+
+    playerPlacements(row, col, direction) {
+        //length is predefined on each ship and i could use
+        //math.random to choose random placement on board
+        if ((rowBox.value && colBox.value && directionBox.value) !== null) {
+            let rowText = rowBox.value;
+            let colText = colBox.value;
+            let directionText = directionBox.value;
+            this.board.placeShips(4, rowText, colText, directionText)
+        }
+        rowBox.value = "";
+        colBox.value = "";
+        directionBox.value = "";
+
+    }
     //add (length, row, col, direction) so players can choose
     //location of ships
+    //type in coordinates for each ship or have a button to
+    //cycle through random placements
 
     attack(row, col) {
         return this.opponentBoard.receiveAttack(row, col);

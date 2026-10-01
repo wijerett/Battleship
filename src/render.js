@@ -27,7 +27,10 @@ export function boardListener(container, getGameboard, cellClick) {
         if (!e.target.classList.contains("cell")) return;
 
         const gameboard = getGameboard();
-        if (gameboard.allShipsSunk()) return;
+        // if (gameboard.allShipsSunk()) {
+        //     // container.classList.add('game-over');
+        //     return;
+        // };
         const row = Number(e.target.dataset.row);
         const col = Number(e.target.dataset.col);
         cellClick(row, col);

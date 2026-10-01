@@ -40,3 +40,8 @@ body {
 .cell.miss {
     background: black;
 }
+
+.game-over {
+    pointer-events: none;
+    opacity: .18;
+}

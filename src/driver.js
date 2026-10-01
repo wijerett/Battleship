@@ -43,6 +43,9 @@ boardListener(boardBox1, () => player.board, (row, col) => {
     opponent.attack(row, col);
     renderBoard(player.board, boardBox1);
     if (player.board.allShipsSunk()) {
+        
+        boardBox2.classList.add('game-over');
+        boardBox1.classList.add('game-over');
         alert("Game Over: You win!");
         return;
     }
@@ -50,6 +53,9 @@ boardListener(boardBox1, () => player.board, (row, col) => {
     player.huntAttack(row, col);
     renderBoard(opponent.board, boardBox2);
     if (opponent.board.allShipsSunk()) {
+
+        boardBox2.classList.add('game-over');
+        boardBox1.classList.add('game-over');
         alert("Game Over: Computer wins");
         return;
     }
