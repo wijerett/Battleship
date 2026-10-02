@@ -32,6 +32,12 @@ startBtn.addEventListener('click', event => {
         driveGame();
 });
 
+const submitBtn = document.querySelector('#submitBtn');
+submitBtn.addEventListener('click', event => {
+    player.playerPlacements();
+
+});
+
 // boardListener(boardBox2, () => opponent.board, (row, col) => {
 //     player.attack(row, col);
 //     renderBoard(opponent.board, boardBox2);

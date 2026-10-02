@@ -1,16 +1,11 @@
 import { Gameboard } from "./board.js";
 
 
-const submitBtn = document.querySelector('#submitBtn');
+
 const rowBox = document.querySelector('#rowBox');
 const colBox = document.querySelector('#colBox');
 const directionBox = document.querySelector('#directionBox');
 
-
-submitBtn.addEventListener('click', () => {
-    playerPlacements();
-
-});
 
 export class Player {
     constructor() {
@@ -31,17 +26,26 @@ export class Player {
     playerPlacements(row, col, direction) {
         //length is predefined on each ship and i could use
         //math.random to choose random placement on board
-        if ((rowBox.value && colBox.value && directionBox.value) !== null) {
-            let rowText = rowBox.value;
-            let colText = colBox.value;
-            let directionText = directionBox.value;
-            this.board.placeShips(4, rowText, colText, directionText)
+
+        //board needs to render first so this runs after start button
+        //is pushed
+
+        row = rowBox.value;
+        col = colBox.value;
+        direction = directionBox.value;
+
+        //cannot read properties of null (reading 'value') Error message
+
+        if ((row && col && direction) !== null) {
+            
+            this.board.placeShips(`4, ${row}, ${col}, ${direction}`)
         }
         rowBox.value = "";
         colBox.value = "";
         directionBox.value = "";
 
     }
+
     //add (length, row, col, direction) so players can choose
     //location of ships
     //type in coordinates for each ship or have a button to
@@ -110,3 +114,4 @@ export class Player {
         return result;
     }
 };
+
