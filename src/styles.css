@@ -3,6 +3,11 @@ body {
     background-color: grey;
 }
 
+#top {
+    display: flex;
+    gap: 20px;
+}
+
 .boardBox {
     display: flex;
     flex-direction: row;
@@ -42,6 +47,37 @@ body {
 }
 
 .game-over {
-    pointer-events: none;
+    pointer-events: auto;
     opacity: .18;
+}
+
+#gameOver {
+    position: fixed;
+    top: 1; left: 1; right: 1; bottom: 1;
+    background: rgba(0, 0, 0, 0);
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay-box {
+    display: flex;
+    margin-top: 150px;
+    background-color: white;
+    width: 100vw;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameOverPopup {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.board1Box, .board2Box {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
 }

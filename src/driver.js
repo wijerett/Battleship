@@ -7,14 +7,21 @@ import { renderBoard, boardListener } from "./render.js";
 
 const boardBox1 = document.getElementById('board1');
 const boardBox2 = document.getElementById('board2');
+
 const player = new Player();
 const opponent = new Player();
+
+const gameOverModal = document.getElementById('gameOver');
+const gameOverMessage = document.getElementById('gameOverPopup');
 
 
 export function driveGame() {
 
     boardBox1.innerHTML = "";
     boardBox2.innerHTML = "";
+
+    boardBox1.classList.remove('game-over');
+    boardBox2.classList.remove('game-over');
 
     player.setup();
     opponent.setup();
@@ -28,8 +35,10 @@ export function driveGame() {
 
 const startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', event => {
+    
     if (player.board.board || opponent.board.board)
         driveGame();
+        gameOverModal.classList.add('hidden');
 });
 
 const submitBtn = document.querySelector('#submitBtn');
@@ -46,23 +55,27 @@ submitBtn.addEventListener('click', event => {
 //second board listener, in case i want pvp
 
 boardListener(boardBox1, () => player.board, (row, col) => {
+
     opponent.attack(row, col);
     renderBoard(player.board, boardBox1);
     if (player.board.allShipsSunk()) {
-        
         boardBox2.classList.add('game-over');
         boardBox1.classList.add('game-over');
-        alert("Game Over: You win!");
+        showGameOver('Game Over: You win!')
         return;
     }
     
     player.huntAttack(row, col);
     renderBoard(opponent.board, boardBox2);
     if (opponent.board.allShipsSunk()) {
-
         boardBox2.classList.add('game-over');
         boardBox1.classList.add('game-over');
-        alert("Game Over: Computer wins");
+        showGameOver('Game Over: Computer wins')
         return;
     }
 });
+
+function showGameOver(text) {
+    gameOverMessage.textContent = text;
+    gameOverModal.classList.remove('hidden');
+};

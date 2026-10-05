@@ -8,20 +8,35 @@
 </head>
 <body>
     <div id="top">
+        
         <button id="startBtn">Start Game</button>
-        <input class="rowBox" type="text">row</input>
-        <input class="colBox" type="text">col</input>
-        <input class="directionBox" type="text">direction</input>
+        <input class="rowBox" id="rowBox" type="text">row</input>
+        <input class="colBox" id="colBox" type="text">col</input>
+        <input class="directionBox" id="directionBox" type="text">direction</input>
         <button id="submitBtn" type="submit">submit</button>
     </div>
+
+    <div id="gameOver" class="overlay hidden">
+        <div class="overlay-box">
+            <p id="gameOverPopup"></p>
+        </div>
+    </div>
+
+
     <div class="boardBox">
-        <label for="Player 1">Player 2 Board</label>
-        <div id="board1">
+
+        <div class="board1Box">
+            <h3>Player 2 Board</h3>
+            <div id="board1"></div>
         </div>
 
-        <label for="Player2">Player 1 Board</label>
-        <div id="board2">
+        <div class="board2Box">
+            <h3>Player 1 Board</h3>
+            <div id="board2"></div>
         </div>
+
+
+
     </div>
 </body>
 </html>
