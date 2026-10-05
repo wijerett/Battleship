@@ -11,7 +11,7 @@ const boardBox2 = document.getElementById('board2');
 const player = new Player();
 const opponent = new Player();
 
-const gameOverModal = document.getElementById('gameOver');
+const gameOverModal = document.getElementById('gameOverModal');
 const gameOverMessage = document.getElementById('gameOverPopup');
 
 

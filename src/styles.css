@@ -15,22 +15,29 @@ body {
     margin-top: 120px;
 }
 
-#board1, #board2 {
+
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--size), 1fr);
+    max-width: 600px;
+    max-height: 600px;
+    width: 80%;
+    aspect-ratio: 1 / 1;
     gap: 20px;
     display: grid;
     margin: 20px;
     border: 2px solid black;
     padding: 10px;
+
 }
 
-.board-grid {
-    display: grid;
-    grid-template-columns: repeat(var(--size), 1fr);
-    gap: 2px;
+.board-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 600px;
     max-width: 600px;
-    max-height: 600px;
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    align-items: center;
 }
 
 .cell {
@@ -51,10 +58,12 @@ body {
     opacity: .18;
 }
 
-#gameOver {
-    position: fixed;
-    top: 1; left: 1; right: 1; bottom: 1;
-    background: rgba(0, 0, 0, 0);
+#gameOverModal {
+    position: relative;
+    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
 }
 
 .hidden {
@@ -62,6 +71,7 @@ body {
 }
 
 .overlay-box {
+    position: absolute;
     display: flex;
     margin-top: 150px;
     background-color: white;
@@ -70,6 +80,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 
 #gameOverPopup {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
