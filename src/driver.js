@@ -44,7 +44,7 @@ startBtn.addEventListener('click', event => {
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', event => {
     player.playerPlacements();
-
+    console.log(player.playerPlacements(0, 0, 'vertical'));
 });
 
 // boardListener(boardBox2, () => opponent.board, (row, col) => {

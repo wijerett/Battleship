@@ -2,9 +2,7 @@ import { Gameboard } from "./board.js";
 
 
 
-const rowBox = document.querySelector('#rowBox');
-const colBox = document.querySelector('#colBox');
-const directionBox = document.querySelector('#directionBox');
+
 
 
 export class Player {
@@ -23,22 +21,24 @@ export class Player {
         this.board.placeShips(1, 4, 0, 'horizontal');
     }
 
-    playerPlacements(row, col, direction) {
+    playerPlacements() {
+        const rowBox = document.querySelector('#rowBox');
+        const colBox = document.querySelector('#colBox');
+        const directionBox = document.querySelector('#directionBox');
+
+        const playerRow = Number(rowBox.value);
+        const playerCol = Number(colBox.value);
+        const playerDir = directionBox.value;
+
         //length is predefined on each ship and i could use
         //math.random to choose random placement on board
-
         //board needs to render first so this runs after start button
         //is pushed
-
-        row = rowBox.value;
-        col = colBox.value;
-        direction = directionBox.value;
-
         //cannot read properties of null (reading 'value') Error message
 
-        if ((row && col && direction) !== null) {
+        if (rowBox.value !== "" & colBox.value !== "" && directionBox !== "") {
             
-            this.board.placeShips(`4, ${row}, ${col}, ${direction}`)
+            this.board.placeShips(4, playerRow, playerCol, playerDir);
         }
         rowBox.value = "";
         colBox.value = "";
