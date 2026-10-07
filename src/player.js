@@ -12,11 +12,11 @@ export class Player {
 
     setup() {
         this.board = new Gameboard();
-        // this.board.placeShips(5, 0, 0, 'horizontal');
-        // this.board.placeShips(4, 1, 0, 'horizontal');
-        // this.board.placeShips(3, 2, 0, 'horizontal');
-        // this.board.placeShips(3, 3, 0, 'horizontal');
-        // this.board.placeShips(2, 4, 0, 'horizontal');
+        this.board.placeShips(5, 0, 0, 'horizontal');
+        this.board.placeShips(4, 1, 0, 'horizontal');
+        this.board.placeShips(3, 2, 0, 'horizontal');
+        this.board.placeShips(3, 3, 0, 'horizontal');
+        this.board.placeShips(2, 4, 0, 'horizontal');
     }
 
     playerPlacements() {
@@ -43,10 +43,8 @@ export class Player {
         rowBox.value = "";
         colBox.value = "";
         directionBox.value = "";
-        
+
         return this.shipIndex >= this.shipLengths.length;
-
-
     }
 
     //add (length, row, col, direction) so players can choose
