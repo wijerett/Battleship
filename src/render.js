@@ -1,7 +1,7 @@
 
 
 
-export function renderBoard(gameboard, container) {
+export function renderBoard(gameboard, container, showShips) {
     container.innerHTML = "";
     container.classList.add("board-grid");
     container.style.setProperty('--size', gameboard.size);
@@ -16,6 +16,10 @@ export function renderBoard(gameboard, container) {
 
             if (cell.attacked && cell.ship) cellDiv.classList.add("hit");
             else if (cell.attacked) cellDiv.classList.add("miss");
+
+            if (cell.ship && !cell.attacked && showShips) {
+                cellDiv.classList.add("ship");
+            }
 
             container.appendChild(cellDiv);
         };

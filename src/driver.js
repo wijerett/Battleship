@@ -14,8 +14,12 @@ const opponent = new Player();
 const gameOverModal = document.getElementById('gameOverModal');
 const gameOverMessage = document.getElementById('gameOverPopup');
 
+let gamePhase = 'placement';
+
 
 export function driveGame() {
+
+    
 
     boardBox1.innerHTML = "";
     boardBox2.innerHTML = "";
@@ -29,8 +33,12 @@ export function driveGame() {
     player.opponentBoard = opponent.board;
     opponent.opponentBoard = player.board;
 
-    renderBoard(player.board, board1);
-    renderBoard(player.board, board2);
+    renderBoard(player.board, board1, true);
+    renderBoard(player.board, board2, false);
+    //need game state tracking from placement to attack phases
+    //"play game" should come up as a div once all 5 ships are placed
+    // as well as populate computer players board
+    
 };
 
 const startBtn = document.querySelector('#startBtn');
@@ -43,37 +51,63 @@ startBtn.addEventListener('click', event => {
 
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', event => {
-    player.playerPlacements();
-    console.log(player.playerPlacements(0, 0, 'vertical'));
+    // player.playerPlacements();
+    const allPlaced = player.playerPlacements();
+
+    renderBoard(player.board, boardBox1);
+
+    if(allPlaced) {
+        gamePhase = 'attack';
+        opponent.setup();
+        renderBoard(opponent.board, boardBox2);
+    }
 });
 
-// boardListener(boardBox2, () => opponent.board, (row, col) => {
-//     player.attack(row, col);
-//     renderBoard(opponent.board, boardBox2);
-// });
+boardListener(boardBox2, () => opponent.board, (row, col) => {
 
-//second board listener, in case i want pvp
-
-boardListener(boardBox1, () => player.board, (row, col) => {
-
-    opponent.attack(row, col);
-    renderBoard(player.board, boardBox1);
-    if (player.board.allShipsSunk()) {
+    if (gamePhase !== 'attack') return;
+    
+    player.attack(row, col);
+    renderBoard(player.board, boardBox2);
+    if (opponent.board.allShipsSunk()) {
         boardBox2.classList.add('game-over');
         boardBox1.classList.add('game-over');
         showGameOver('Game Over: You win!')
         return;
     }
     
-    player.huntAttack(row, col);
-    renderBoard(opponent.board, boardBox2);
-    if (opponent.board.allShipsSunk()) {
+    opponent.huntAttack();
+    renderBoard(player.board, boardBox1);
+    if (player.board.allShipsSunk()) {
         boardBox2.classList.add('game-over');
         boardBox1.classList.add('game-over');
         showGameOver('Game Over: Computer wins')
         return;
     }
 });
+
+//second board listener, in case i want pvp
+
+// boardListener(boardBox1, () => player.board, (row, col) => {
+
+//     opponent.attack(row, col);
+//     renderBoard(player.board, boardBox1);
+//     if (player.board.allShipsSunk()) {
+//         boardBox2.classList.add('game-over');
+//         boardBox1.classList.add('game-over');
+//         showGameOver('Game Over: You win!')
+//         return;
+//     }
+    
+//     player.huntAttack(row, col);
+//     renderBoard(opponent.board, boardBox2);
+//     if (opponent.board.allShipsSunk()) {
+//         boardBox2.classList.add('game-over');
+//         boardBox1.classList.add('game-over');
+//         showGameOver('Game Over: Computer wins')
+//         return;
+//     }
+// });
 
 function showGameOver(text) {
     gameOverMessage.textContent = text;
