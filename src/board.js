@@ -34,7 +34,7 @@ export class Gameboard {
                 throw new Error('Ship out of bounds');
             }
             if (this.board[r][c].ship !== null) {
-                throw new Error('Cell already occupied');
+                alert('Cell already occupied');
             }
             coordinates.push([r, c]);
         }
