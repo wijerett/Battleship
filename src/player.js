@@ -22,6 +22,27 @@ export class Player {
         this.board.placeShips(2, 4, 0, 'horizontal');
     }
 
+
+
+    randomSetup() {
+        this.board = new Gameboard();
+
+        for (const length of this.shipLengths) {
+            let placed = false;
+
+            while (!placed) {
+                const row = Math.floor(Math.random() * this.board.size);
+                const col = Math.floor(Math.random() * this.board.size);
+                const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+
+                if (this.board.canPlace(length, row, col, direction)) {
+                    this.board.placeShips(length, row, col, direction);
+                    placed = true;
+                }
+            }
+        }
+    }
+
     playerPlacements() {
         
 
@@ -34,10 +55,6 @@ export class Player {
         const playerDir = directionBox.value;
 
 
-        //board needs to render first so this runs after start button
-        //is pushed
-        //cannot read properties of null (reading 'value') Error message
-
         if (rowBox.value !== "" & colBox.value !== "" && directionBox !== "") {
             
             this.board.placeShips(this.shipLengths[this.shipIndex], playerRow, playerCol, playerDir);
@@ -49,11 +66,6 @@ export class Player {
 
         return this.shipIndex >= this.shipLengths.length;
     }
-
-    //add (length, row, col, direction) so players can choose
-    //location of ships
-    //type in coordinates for each ship or have a button to
-    //cycle through random placements
 
     attack(row, col) {
         return this.opponentBoard.receiveAttack(row, col);
@@ -94,10 +106,6 @@ export class Player {
     }
 
     huntAttack() {
-        //needs to hunt after getting a hit
-        //needs to check if cell has already been attacked
-        //needs to add neighbors to queue
-        //needs to stop the hunt after getting a sink
         let row, col;
 
         if (this.targetQueue.length > 0) {

@@ -22,6 +22,17 @@ export class Gameboard {
         return board;
     };
 
+    canPlace(length, row, col, direction) {
+        for (let i = 0; i < length; i++) {
+            const r = direction === 'vertical' ? row + i : row;
+            const c = direction === 'horizontal' ? col + i : col;
+
+            if (r >= this.size || c >= this.size) return false;
+            if (this.board[r][c].ship !== null) return false;
+        }
+        return true;
+    }
+
     placeShips(length, row, col, direction) {
         const ship = new Ship(length);
         const coordinates = [];

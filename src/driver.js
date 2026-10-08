@@ -67,7 +67,7 @@ playGameBtn.addEventListener('click', () => {
     playGamePrompt.classList.add('hidden');
 
     gamePhase = 'attack';
-    opponent.setup();
+    opponent.randomSetup();
     player.opponentBoard = opponent.board;
     opponent.opponentBoard = player.board;
     renderBoard(opponent.board, boardBox2, false);
@@ -100,4 +100,3 @@ function showGameOver(text) {
     gameOverMessage.textContent = text;
     gameOverModal.classList.remove('hidden');
 };
-
