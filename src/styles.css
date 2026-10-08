@@ -58,30 +58,6 @@ body {
     opacity: .18;
 }
 
-#gameOverModal {
-    position: relative;
-    inset: 0;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-}
-
-.hidden {
-    display: none;
-}
-
-.overlay-box {
-    position: absolute;
-    display: flex;
-    margin-top: 150px;
-    background-color: white;
-    width: 100vw;
-    height: 300px;
-    align-items: center;
-    justify-content: center;
-}
-
-
 #gameOverPopup {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -95,4 +71,57 @@ body {
 
 .cell.ship {
     background-color: darkgreen;
+}
+
+
+
+#gameOverModal {
+    position: relative;
+    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+
+.overlay-box {
+    position: absolute;
+    display: flex;
+    margin-top: 150px;
+    background-color: white;
+    width: 100vw;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#playGamePrompt {
+
+    position: absolute;
+    margin-top: 150px;
+    background-color: white;
+    width: 100vw;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box{
+    position: relative;
+    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    background-color: white;
+    width: 100vw;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
 }

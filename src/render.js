@@ -1,6 +1,5 @@
 
 
-
 export function renderBoard(gameboard, container, showShips) {
     container.innerHTML = "";
     container.classList.add("board-grid");

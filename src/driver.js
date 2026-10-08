@@ -1,5 +1,4 @@
-
-import "./styles.css";
+import "./styles.css"
 import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
 import { renderBoard, boardListener } from "./render.js";
@@ -16,10 +15,14 @@ const gameOverMessage = document.getElementById('gameOverPopup');
 
 let gamePhase = 'placement';
 
+const playGamePrompt = document.getElementById('playGamePrompt');
+const playGameBtn = document.getElementById('playGameBtn');
+
+function showPlayPrompt() {
+    playGamePrompt.classList.remove('hidden');
+};
 
 export function driveGame() {
-
-    
 
     boardBox1.innerHTML = "";
     boardBox2.innerHTML = "";
@@ -51,20 +54,23 @@ startBtn.addEventListener('click', event => {
 
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', event => {
-    // player.playerPlacements();
     const allPlaced = player.playerPlacements();
-
     renderBoard(player.board, boardBox1, true);
 
     if (allPlaced) {
-        gamePhase = 'attack';
-        opponent.setup();
-        player.opponentBoard = opponent.board;
-        opponent.opponentBoard = player.board;
-        
-        renderBoard(opponent.board, boardBox2, false);
-        //make start game now div appear here
+        playGamePrompt.classList.remove('hidden');
     }
+});
+
+
+playGameBtn.addEventListener('click', () => {
+    playGamePrompt.classList.add('hidden');
+
+    gamePhase = 'attack';
+    opponent.setup();
+    player.opponentBoard = opponent.board;
+    opponent.opponentBoard = player.board;
+    renderBoard(opponent.board, boardBox2, false);
 });
 
 boardListener(boardBox2, () => opponent.board, (row, col) => {
@@ -95,19 +101,3 @@ function showGameOver(text) {
     gameOverModal.classList.remove('hidden');
 };
 
-function devAutoPlacePlayer() {
-    player.board = new Gameboard();
-    player.board.placeShips(5, 0, 0, 'horizontal');
-    player.board.placeShips(4, 1, 0, 'horizontal');
-    player.board.placeShips(3, 2, 0, 'horizontal');
-    player.board.placeShips(3, 3, 0, 'horizontal');
-    player.board.placeShips(2, 4, 0, 'horizontal');
-    gamePhase = 'attack';
-    opponent.setup();
-    player.opponentBoard = opponent.board;
-    opponent.opponentBoard = player.board;
-    renderBoard(player.board, boardBox1, true);
-    renderBoard(opponent.board, boardBox2, false);
-};
-
-devAutoPlacePlayer();

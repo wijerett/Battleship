@@ -6,11 +6,14 @@ export class Player {
         this.opponentBoard = null;
         this.targetQueue = [];
         this.shipIndex = 0;
+        this.shipLengths = [5, 4, 3, 3, 2];
     }
 
     
 
     setup() {
+        //i need to add a way to let computer choose random ship placement
+        
         this.board = new Gameboard();
         this.board.placeShips(5, 0, 0, 'horizontal');
         this.board.placeShips(4, 1, 0, 'horizontal');
@@ -20,7 +23,7 @@ export class Player {
     }
 
     playerPlacements() {
-        this.shipLengths = [5, 4, 3, 3, 2];
+        
 
         const rowBox = document.querySelector('#rowBox');
         const colBox = document.querySelector('#colBox');

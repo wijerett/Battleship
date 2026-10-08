@@ -48,8 +48,9 @@ export class Gameboard {
     receiveAttack(row, col) {
         const cell = this.board[row][col];
         if (cell.attacked) {
-            alert('Cell already attacked: Try again!');
-            return { hit: false };
+            { hit: false };
+            throw new Error('Cell already attacked: Try again!');
+            
         }
         let wasHit = false;
 
