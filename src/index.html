@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORwOKGgo">
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="top">
+        
+        <button id="startBtn">Start Game</button>
+        <input class="rowBox" id="rowBox" type="text">row</input>
+        <input class="colBox" id="colBox" type="text">col</input>
+        <input class="directionBox" id="directionBox" type="text">direction</input>
+        <button id="submitBtn" type="submit">submit</button>
+    </div>
+
+    <div id="playGamePrompt" class="modal-overlay hidden">
+        <div class="modal-box">
+            <p>All ships placed!</p>
+            <button id="playGameBtn">Begin Game!</button>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="Modal-overlay hidden">
+        <div class="overlay-box">
+            <p id="gameOverPopup"></p>
+        </div>
+    </div>
+
+
+    <div class="boardBox">
+
+        <div class="board-container">
+            <h3>Player 1 Board</h3>
+            <div id="board1" class="board-grid"></div>
+        </div>
+        
+        <div class="board-container">
+            <h3>Player 2 Board</h3>
+            <div id="board2" class="board-grid"></div>
+        </div>
+
+
+
+    </div>
 </body>
 </html>

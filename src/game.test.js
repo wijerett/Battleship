@@ -3,6 +3,7 @@ import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
 
 
+
 const board = new Gameboard();
 
 const ship = new Ship();
@@ -113,7 +114,7 @@ test('unable to attack a cell twice', () => {
     board.receiveAttack(2, 2);
     expect(() => {
         board.receiveAttack(2, 2);
-    }).toThrow('Cell already attacked');
+    }).toThrow('Cell already attacked: Try again!');
 });
 
 test('check if all ships are sunk', () => {
@@ -160,3 +161,4 @@ test('tracks sunk ships', () => {
     console.log(player.board.board);
     console.log(opponent.board.board);
 });
+
