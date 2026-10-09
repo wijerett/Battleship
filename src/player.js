@@ -44,7 +44,7 @@ export class Player {
     }
 
     playerPlacements() {
-        
+        if (this.shipIndex >= this.shipLengths.length) return true;
 
         const rowBox = document.querySelector('#rowBox');
         const colBox = document.querySelector('#colBox');
@@ -54,16 +54,21 @@ export class Player {
         const playerCol = Number(colBox.value);
         const playerDir = directionBox.value;
 
-
         if (rowBox.value !== "" & colBox.value !== "" && directionBox !== "") {
-            
-            this.board.placeShips(this.shipLengths[this.shipIndex], playerRow, playerCol, playerDir);
-            this.shipIndex++;
-        }
-        rowBox.value = "";
-        colBox.value = "";
-        directionBox.value = "";
+            const placed = this.board.placeShips(
+                this.shipLengths[this.shipIndex],
+                playerRow,
+                playerCol,
+                playerDir
+            );
 
+            if (placed) {
+                this.shipIndex++;
+                rowBox.value = "";
+                colBox.value = "";
+                directionBox.value = "";
+            }
+        }
         return this.shipIndex >= this.shipLengths.length;
     }
 

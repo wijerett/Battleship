@@ -42,18 +42,23 @@ export class Gameboard {
             const c = direction === 'horizontal' ? col + i : col;
 
             if (r >= this.size || c >= this.size) {
-                throw new Error('Ship out of bounds');
+                alert('Ship out of bounds');
+                return false;
             }
             if (this.board[r][c].ship !== null) {
                 alert('Cell already occupied');
+                return false;
+                //right now ship doesnt get placed and alert shows but
+                //ship gets skipped entirely and placed in wrong spot
             }
             coordinates.push([r, c]);
         }
+        
         coordinates.forEach(([r, c]) => {
             this.board[r][c].ship = ship;
         });
         this.ships.push(ship);
-        return ship;
+        return true;
     }
 
     receiveAttack(row, col) {
