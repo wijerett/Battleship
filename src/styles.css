@@ -125,3 +125,8 @@ body {
 .hidden {
     display: none;
 }
+
+.instructions {
+    text-align: center;
+}
+

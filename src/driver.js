@@ -15,6 +15,9 @@ const gameOverMessage = document.getElementById('gameOverPopup');
 
 let gamePhase = 'placement';
 
+//need to add a reset button to the top or to game over modal
+//need to reset to empty game boards and empty input boxes
+
 const playGamePrompt = document.getElementById('playGamePrompt');
 const playGameBtn = document.getElementById('playGameBtn');
 
@@ -100,3 +103,4 @@ function showGameOver(text) {
     gameOverMessage.textContent = text;
     gameOverModal.classList.remove('hidden');
 };
+
