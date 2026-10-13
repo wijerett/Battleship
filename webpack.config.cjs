@@ -1,20 +1,25 @@
 
-import path from "node:path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
-export default {
+
+
+module.exports = {
   mode: "development",
   entry: "./src/driver.js",
   output: {
     filename: "driver.js",
-    path: path.resolve(import.meta.dirname, "dist"),
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/404.html', to: '404.html' }
+      ]
+    })
   ],
   module: {
     rules: [
