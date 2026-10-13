@@ -1,5 +1,4 @@
 import "./styles.css"
-import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
 import { renderBoard, boardListener } from "./render.js";
 
@@ -14,9 +13,6 @@ const gameOverModal = document.getElementById('gameOverModal');
 const gameOverMessage = document.getElementById('gameOverPopup');
 
 let gamePhase = 'placement';
-
-//need to add a reset button to the top or to game over modal
-//need to reset to empty game boards and empty input boxes
 
 const playGamePrompt = document.getElementById('playGamePrompt');
 const playGameBtn = document.getElementById('playGameBtn');
@@ -41,19 +37,7 @@ export function driveGame() {
 
     renderBoard(player.board, board1, true);
     renderBoard(player.board, board2, false);
-    //need game state tracking from placement to attack phases
-    //"play game" should come up as a div once all 5 ships are placed
-    // as well as populate computer players board
-    
 };
-
-const startBtn = document.querySelector('#startBtn');
-startBtn.addEventListener('click', event => {
-    
-    if (player.board.board || opponent.board.board)
-        driveGame();
-        gameOverModal.classList.add('hidden');
-});
 
 const submitBtn = document.querySelector('#submitBtn');
 submitBtn.addEventListener('click', event => {
@@ -65,6 +49,27 @@ submitBtn.addEventListener('click', event => {
     }
 });
 
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', event => {
+    
+    gameOverModal.classList.add('hidden');
+    playGamePrompt.classList.add('hidden');
+
+    boardBox1.classList.remove('game-over');
+    boardBox2.classList.remove('game-over');
+
+    player.reset();
+    opponent.reset();
+    gamePhase = 'placement';
+
+    rowBox.value = "";
+    colBox.value = "";
+    directionBox.value = "";
+
+    renderBoard(player.board, boardBox1, true);
+    renderBoard(opponent.board, boardBox2, false);
+
+});
 
 playGameBtn.addEventListener('click', () => {
     playGamePrompt.classList.add('hidden');
@@ -104,3 +109,5 @@ function showGameOver(text) {
     gameOverModal.classList.remove('hidden');
 };
 
+renderBoard(player.board, boardBox1, true);
+renderBoard(opponent.board, boardBox2, false);
