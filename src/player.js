@@ -68,7 +68,7 @@ export class Player {
                 this.shipIndex++;
                 rowBox.value = "";
                 colBox.value = "";
-                directionBox.value = "";
+                directionBox.value = "Horizontal";
             }
         }
         return this.shipIndex >= this.shipLengths.length;

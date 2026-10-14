@@ -64,7 +64,7 @@ resetBtn.addEventListener('click', event => {
 
     rowBox.value = "";
     colBox.value = "";
-    directionBox.value = "";
+    directionBox.value = "Horizontal";
 
     renderBoard(player.board, boardBox1, true);
     renderBoard(opponent.board, boardBox2, false);
