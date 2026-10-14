@@ -1,6 +1,7 @@
 
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 
@@ -11,15 +12,13 @@ module.exports = {
   output: {
     filename: "driver.js",
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: './',
     clean: true,
   },
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/404.html', to: '404.html' }
-      ]
-    })
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
   ],
   module: {
     rules: [
