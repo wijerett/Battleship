@@ -1,4 +1,15 @@
 
+@font-face {
+    font-family: my-font;
+    src: url('./BlackOpsOne-Regular.woff2') format('woff2'),
+        url('./BlackOpsOne-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+
+}
+
+
 body {
     background-color: grey;
 }
@@ -158,11 +169,12 @@ body {
 
 .instructions {
     text-align: center;
+    color: sienna;
 }
 
 .battleshipTitle {
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'my-font';
     font-size: 250%;
-    text-decoration: brown;
+    color: white;
 }
