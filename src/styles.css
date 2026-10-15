@@ -3,19 +3,6 @@ body {
     background-color: grey;
 }
 
-#top {
-    display: flex;
-    max-width: 700px;
-    gap: 15px;
-}
-
-.topContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
-
 .rowBox, .colBox {
     width: 30px;
 }
@@ -137,9 +124,45 @@ body {
     display: none;
 }
 
+.reset {
+    border-radius: 25px;
+}
+
+#submitBtn {
+    border-radius: 25px;
+}
+
+#top {
+    display: flex;
+    max-width: 750px;
+    gap: 15px;
+    border: 2px solid black;
+    padding: 8px;
+    border-radius: 25px;
+    background-color: lightgray;
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .instructions {
     text-align: center;
 }
 
-.reset {
+.battleshipTitle {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 250%;
+    text-decoration: brown;
 }
